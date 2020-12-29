@@ -1,0 +1,21 @@
+pip install Django==1.11.9  //Installs Django and associated software
+
+pip  //Displays the files/versiaon associated with pip - in this case Django, pip, pytz and setuptools
+
+deactivate (This will deactivate your virtual environment)
+
+pip3 list // now we just see pip and its version info - we installed Django inside the virtual environment we created, so it isn't available when the venv is deactivated
+
+source myEnvironments/py3Env/bin/activate 
+
+pip install Django==1.11.9 // Since it is already installed in the environemnt, it tells us that the requirement is already satisfied and shows us the path to where Django is downloaded
+
+pip freeze // pip freeze outputs just Django and pytz with their versio info in the format that pip reads it in (ie in the format that you would enter it to install the package) - I assume these are the packages that are actually installed while pip list shows everything that is included, even the things that are installed as corrallaries to the installed papckages like pip?
+
+First cd into your Desktop directory (cd ~/Desktop), then run this command: pip freeze > requirements.txt. What do you see when you ls? What's inside this file? // The same info that was reported with pip freeze, just inside a text document
+
+pip uninstall Django // shows all that would be uninstalled and asks confirmtion to proceed
+
+pip show Django //package not found since we just uninstalled it
+
+pip search Flask // reports all the Flask items found (in this folder? IN this environment?)
