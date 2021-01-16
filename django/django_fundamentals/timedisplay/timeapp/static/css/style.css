@@ -1,0 +1,19 @@
+style.css
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.container{
+    width: 800px;
+    background-color: #D5D2AE;
+    margin: 0 auto;
+}
+
+    header{
+        width: 510px;
+        margin: 0 auto;
+        padding: 40px 90px 40px 90px;
+        display: block;
+    }
