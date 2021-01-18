@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+</head>
+
+<body>
+    <h1>Fill out the form: </h1>
+
+    <form action='/process' method='POST'>
+        {% csrf_token %}
+        <label for='name'>Name:</label>
+        <input type='text' id='name' name='name'>
+        
+        <label for='language'>Languages:</label>
+        <select id='language' name='language'>
+            <option value="python">Python</option>
+            <option value="c#">C#</option>
+            <option value="java">Java</option>
+            <option value="javascript">JavaScript</option>
+            <option value="c">C</option>
+        </select>
+        
+        <label for='location'>Locations:</label>
+
+        <input type='radio' id='burbank'name='location' value='burbank'>
+        <label for='burbank'> Burbank</label>
+        <input type='radio' id='chicago'name='location' value='chicago'>
+        <label for='chicago'> Chicago</label>
+        <input type='radio' id='dallas'name='location' value='dallas'>
+        <label for='dallas'> Dallas</label>
+        <input type='radio' id='seattle'name='location' value='seattle'>
+        <label for='seattle'> Seattle</label>
+        <input type='radio' id='dc'name='Location' value='dc'>
+        <label for='dc'>DC</label>
+
+        <label for='stoke'>Stoke Level:</label>
+        
+        <input type="checkbox" id="low" name="stoke" value="low">
+        <label for="low"> Low</label>
+        <input type="checkbox" id="mid" name="stoke" value="mid">
+        <label for="mid"> Medium</label>
+        <input type="checkbox" id="high" name="stoke" value="high">
+        <label for="high"> High</label><br>
+            
+        <input type="submit" value='View Survey Results'>
+    </form>
+</body>
+
+</html>
