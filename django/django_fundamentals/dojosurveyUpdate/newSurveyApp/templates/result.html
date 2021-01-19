@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New User</title>
     {% load static %}
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <h1>New Ninja: </h1>
-    <p>Name: {{name}}</p>
-    <p>Location: {{loc}}</p>
-    <p>Language: {{lang}}</p> 
-    <p>Stoke Level: {{stoke}}</p>
+    <p>Name: {{ result.name }}</p>
+    <p>Location: {{ result.location }}</p>
+    <p>Language: {{ result.language }}</p> 
+    <p>Stoke Level: {{ result.stoke }}</p>
+    <p>Comment: {{ result.comment }}</p>
+    <a href="/" class="btn-primary">Go Back</a>
 </body>
 </html>
