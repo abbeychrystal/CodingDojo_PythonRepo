@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Word</title>
+</head>
+<body>
+    <h1>Random Word: {{request.session.word}}</h1>
+    <h1>Guesses: {{request.session.count}}</h1>
+
+    <a href="/reset">Reset Count</a>
+    
+</body>
+</html>
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandomStringGenerator</title>
+    {% load static %}
+</head>
+<body>
+    <div id="container">
+        <h2>Random Word (Attempt #{{ request.session.counter }}):</h2>
+        <p id="string">{{ string }}</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <button type="submit" name="reload">RELOAD!</button>
+        </form>
+    </div> 
+</body>
+</html> -->
