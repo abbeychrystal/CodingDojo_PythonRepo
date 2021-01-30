@@ -1,0 +1,32 @@
+In the Shell:
+
+Create 3 new Users for the database:
+>>>User.objects.create(first_name="Franky", last_name="Talons", email_address="franky@talons.com", age="2")
+>>>User.objects.create(first_name="Becky", last_name="Wasserhen", email_address="becky@wasserhen.com", age="1")
+>>>User.objects.create(first_name="Victoria", last_name="Peckhen", email_address="victoria@peckhen.com", age="1")
+
+Query: Retrieve all the users:
+>>>User.objects.all()
+
+Query: Retrieve the last user  
+>>>User.objects.last()
+
+Query: Retrieve the first user  
+>>>User.objects.first()
+
+Query: Change the user with id=3 so their last name is Pancakes.  
+>>>c=User.objects.get(id=3)
+>>> c.last_name="Pancakes"
+>>> c.save()
+
+Query: Delete the user with id=2 from the database  
+>>> c=User.objects.get(id=2)
+>>> c.delete()
+
+Query: Get all the users, sorted by their first name  
+>>>User.objects.all().order_by("first_name")
+
+BONUS Query: Get all the users, sorted by their first name in descending order  
+>>>User.objects.all().order_by("-first_name")
+
+Submit your .txt file that contains all the queries you ran in the shell
