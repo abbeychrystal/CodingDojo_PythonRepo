@@ -1,0 +1,62 @@
+Query: Create 3 new dojos  
+  >>> Dojo.objects.create(name="Midwest", city="Columbus", state="OH")
+  Name: Midwest
+  >>> Dojo.objects.create(name="South", city="Biloxi", state="MS")
+  Name: South
+  >>> Dojo.objects.create(name="Plains", city="Wichita", state="KS")
+  Name: Plains
+
+Query: Delete the 3 dojos you just created  
+  >>> dojo_delete = Dojo.objects.get(id=1)
+  >>> dojo_delete.delete()
+  (1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+  >>> dojo_delete = Dojo.objects.get(id=2)
+  >>> dojo_delete.delete()
+  (1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+  >> dojo_delete = Dojo.objects.get(id=3)
+  >>> dojo_delete.delete()
+  (1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+  
+Query: Create 3 more dojos  
+  >>> Dojo.objects.create(name="SouthCentral", city="Dallas", state="TX")
+  Name: SouthCentral
+  >>> Dojo.objects.create(name="SouthEast", city="Atlanta", state="GA")
+  Name: SouthEast
+  >>> Dojo.objects.create(name="SouthWest", city="Albuquerque", state="NM")
+  Name: SouthWest
+
+Query: Create 3 ninjas that belong to the first dojo  
+  >>> new_ninja = Ninja.objects.create(dojo_id=Dojo.objects.get(id=4), first_name="Sam", last_name="Smith")
+  >>> new_ninja = Ninja.objects.create(dojo_id=Dojo.objects.get(id=4), first_name="Frank", last_name="Farmer")
+  >>> new_ninja = Ninja.objects.create(dojo_id=Dojo.objects.get(id=4), first_name="Neal", last_name="Ninja")
+
+Query: Create 3 ninjas that belong to the second dojo  
+  >>> new_ninja = Ninja.objects.create(dojo_id=Dojo.objects.get(id=5), first_name="Pam", last_name="Painter")
+  >>> new_ninja = Ninja.objects.create(dojo_id=Dojo.objects.get(id=5), first_name="William", last_name="Walker")
+  >>> new_ninja = Ninja.objects.create(dojo_id=Dojo.objects.get(id=5), first_name="Kyle", last_name="Kook")
+
+Query: Create 3 ninjas that belong to the third dojo  
+  >>> new_ninja = Ninja.objects.create(dojo_id=Dojo.objects.get(id=6), first_name="Rhonda", last_name="Runner")
+  >>> new_ninja = Ninja.objects.create(dojo_id=Dojo.objects.get(id=6), first_name="Nelson", last_name="Nunchuks")
+  >>> new_ninja = Ninja.objects.create(dojo_id=Dojo.objects.get(id=6), first_name="Tammy", last_name="Trainer")
+  
+Query: Retrieve all the ninjas from the first dojo  
+  >>> Ninja.objects.filter(dojo_id=4)
+<QuerySet [Sam Smith, Frank Farmer, Neal Ninja]>
+
+Query: Retrieve all the ninjas from the last dojo  
+  >>> Ninja.objects.filter(dojo_id=6)
+  <QuerySet [Rhonda Runner, Nelson Nunchuks, Tammy Trainer]>
+
+Query: Retrieve the last ninja's dojo  
+  Ninja.objects.last().dojo_id
+
+Add a new text field called "desc" to your Ninja class  Create and run the migration files to update the table in your database. If needed, provide a default value of "old dojo"  
+  
+Query: Create a new ninja  
+  >>> new_ninja = Ninja.objects.create(dojo_id=Dojo.objects.get(id=6), first_name="Barney", last_name="Banker", desc = "Bless his heart")
+  >>> Ninja.objects.all()
+  <QuerySet [Sam Smith, Frank Farmer, Neal Ninja, Pam Painter, William Walker, Kyle Kook, Rhonda Runner, Nelson Nunchuks, Tammy Trainer, Barney Banker]>
+  >>>
+
+Submit your .txt file that contains all the queries you ran in the shell
