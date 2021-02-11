@@ -1,9 +1,12 @@
+# Michaels's solution:
+
 from django.urls import path
 from . import views
-urlpatterns = [
+
+urlpatterns=[
     path('', views.index),
     path('reset', views.reset),
-    path('gold', views.process_gold)
+    path('place/<str:place>', views.process),
 ]
 
 
@@ -12,11 +15,17 @@ urlpatterns = [
 
 
 
+# From platform solution: 
+# from django.urls import path
+# from . import views
+# urlpatterns = [
+#     path('', views.index),
+#     path('reset', views.reset),
+#     path('gold', views.process_gold)
+# ]
 
 
-
-
-
+# My first attempt: 
 # from django.urls import path
 # from . import views
 	

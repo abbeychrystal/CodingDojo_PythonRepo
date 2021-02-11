@@ -1,4 +1,94 @@
+<!-- Michael's video solution: (stopped at 1:02)-->
+
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold</title>
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+        .gold_form{
+            display: inline-block;
+            border: 2px solid black;
+            padding: 25px;
+            width: 175px;
+            text-align: center;
+        }
+        #gold{
+            border: 2px solid black;
+            padding: 5px;
+        }
+        #activity{
+            border: 2px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <p>Your Gold: <span id='gold'>{{request.session.gold}}</span></p>
+    <a href='/reset'>Reset Game</a>
+    
+    <div id="forms">
+        {% for place in places %}
+        <form action="/place/{{place}}" class="gold_form">
+            <h2>{{ place }}</h2>
+            {% if place == 'farm' %}
+                <p>{{places.farm}}</p>
+            {% elif place == 'cave' %}
+                <p>{{places.cave}}</p>
+            {% elif place == 'house' %}
+                <p>{{places.house}}</p>
+            {% else %}
+                <p>{{places.casino}}</p>
+            {% endif %}
+            <!-- <input type="hidden" name="place" value="farm"> -->
+            <input type="submit" value="Find Gold!">
+        </form>
+        {% endfor %}
+
+        <div id='activity'>
+            <p>Activities:</p>
+        </div>
+<!-- 
+        <form action="/process_gold" class="gold_form" method='post'>
+            {% csrf_token %}
+            <h2>Cave</h2>
+            <p>(earns 5-10 golds)</p>
+            <input type="hidden" name="place" value="cave">
+            <input type="submit" value="Find Gold!">
+        
+        </form>
+        <form action="/process_gold" class="gold_form" method='post'>
+            {% csrf_token %}
+            <h2>House</h2>
+            <p>(earns 2-5 golds)</p>
+            <input type="hidden" name="place" value="house">
+            <input type="submit" value="Find Gold!">
+        
+        </form>
+        <form action="/process_gold" class="gold_form" method='post'>
+            {% csrf_token %}
+            <h2>Casino</h2>
+            <p>(earns/takes 0-50 golds)</p>
+            <input type="hidden" name="place" value="casino">
+            <input type="submit" value="Find Gold!">
+        
+        </form> -->
+
+    </div>
+</body>
+</html>
+
+
+
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- Given solution from the platform: -->
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -57,12 +147,13 @@
     {% endfor %}
     </div>
 </body>
-</html>
+</html> -->
 
 
 
 
-
+<!-- ///////////////////////////////////////////////////////////////////// -->
+<!-- My first attempt: -->
 
 <!-- <!DOCTYPE html>
 <html lang="en">
