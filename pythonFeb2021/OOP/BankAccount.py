@@ -1,0 +1,50 @@
+# Objectives
+# Practice writing classes
+# As we continue thinking about our banking application, we realize that it would be more accurate to assign a balance not to the user directly, but that in the real world, users have accounts, and accounts have balances. This gives us the idea that maybe an account is its own class! But as we stated, it is not completely independent of a class; accounts only exist because users open them.
+
+# For this assignment, don't worry about putting any user information in the BankAccount class. We'll take care of that in the next lesson!
+
+# Let's first just get some more practice writing classes by writing a new BankAccount class. In the next lesson, we'll tie our User and BankAccount classes together.
+
+# The BankAccount class should have a balance. When a new BankAccount instance is created, if an amount is given, the balance of the account should initially be set to that amount; otherwise, the balance should start at $0. The account should also have an interest rate, saved as a decimal (i.e. 1% would be saved as 0.01), which should be provided upon instantiation. (Hint: when using default values in parameters, the order of parameters matters!)
+
+# The class should also have the following methods:
+
+# deposit(self, amount) - increases the account balance by the given amount
+# withdraw(self, amount) - decreases the account balance by the given amount if there are sufficient funds; if there is not enough money, print a message "Insufficient funds: Charging a $5 fee" and deduct $5
+# display_account_info(self) - print to the console: eg. "Balance: $100"
+# yield_interest(self) - increases the account balance by the current balance * the interest rate (as long as the balance is positive)
+
+class BankAccount:
+    def __init__(self, name, int_rate, balance = 0):
+        self.name = name
+        self.interest = int_rate
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+        return self
+
+    def withdraw(self, amount):
+        if self.balance > amount:
+            self.balance -= amount
+        else:
+            print('Insufficient funds: Charging $5 fee')
+            self.balance -= 5
+        return self
+
+    def display_account_info(self):
+        print(f"Account: {self.name}, Balance: ${self.balance}")
+
+    def yield_interest(self):
+        if self.balance > 0:
+            self.balance += (self.balance * self.interest)
+        else:
+            print("Low Balance: Interest cannot be applied")
+        return self
+
+savings = BankAccount('Savings', 0.03)
+primarychecking = BankAccount('Primary Checking', 0.00, 500)
+    
+savings.deposit(50).deposit(50).deposit(50).withdraw(50).yield_interest().display_account_info()
+primarychecking.deposit(1000).deposit(1000).withdraw(50).withdraw(50).withdraw(50).withdraw(50).yield_interest().display_account_info()
