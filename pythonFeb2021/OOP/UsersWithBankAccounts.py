@@ -90,12 +90,12 @@ class User:
         for account in self.accounts:
             if account.account_name == account_name:
                 account.withdraw(amount)
-                # other_user.accounts.other_account_name.deposit(amount)  *****BROKEN
-                print('Transfer')
-            return self
-   
-        # print(f"{self.name} is transfering ${amount} from {account} to {other_user.name}'s {other_user_account}")
-       
+                for otheraccount in other_user.accounts:
+                    if otheraccount.account_name == other_account_name:
+                        otheraccount.deposit(amount)
+                        print(f"{self.name} transferred {amount} to {other_user.name}'s {otheraccount.account_name}")
+        return self
+
 
 
 guido = User("Guido", "guido@user.com")
@@ -107,6 +107,7 @@ guido.new_account("checking", 0, 100).make_deposit(100, 'checking').make_withdra
 monty.new_account('checking', 0, 100).make_deposit(100, 'checking').make_deposit(100, 'checking').make_withdrawal(50, 'checking').display_user_balance('checking')
 
 guido.transfer_money(50, 'checking', monty, 'checking').display_user_balance('checking')
+monty.display_user_balance('checking')
 
 # jorge.make_deposit(100).make_withdrawal(50).make_withdrawal(50).make_withdrawal(50).display_user_balance()
 
