@@ -29,6 +29,9 @@ class Store:
         self.products.pop[id]
         return self
 
+    # def inflation(self, percent_increase):
+
+
 #-------------------------------------------------------------------------------------
 ralphs = Store("Ralph's")
 apple = Product("Apple", 0.25, "Produce")
