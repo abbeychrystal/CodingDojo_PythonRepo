@@ -1,0 +1,28 @@
+>>> from users_app.models import *
+
+>>> user1 = User.objects.create(first_name="Abbey", last_name="Chrystal", email_address="abbey@codingdojo.com", age=40)
+>>> user2 = User.objects.create(first_name="Roy", last_name="Hudson", email_address="roy@codingdojo.com", age=24)
+>>> user3 = User.objects.create(first_name="Ken", last_name="Swegles", email_address="ken@codingdojo.com", age=40)
+
+>>> User.objects.all()
+<QuerySet [<User: User object (1)>, <User: User object (2)>, <User: User object (3)>]>
+
+>>> User.objects.last()
+<User: User object (3)>
+
+>>> User.objects.first()
+<User: User object (1)>
+
+>>> user_to_update = User.objects.get(id=3)
+>>> user_to_update.last_name = "Pancakes"
+>>> user_to_update.save()
+
+>>> user_to_delete = User.objects.get(id=2)
+>>> user_to_delete.delete()
+(1, {'users_app.User': 1})
+
+>>> User.objects.order_by('first_name')
+<QuerySet [<User: User object (1)>, <User: User object (3)>]>
+
+>>> User.objects.order_by('-first_name')
+<QuerySet [<User object: Ken (Pancakes)>, <User object: Abbey (Chrystal)>]>

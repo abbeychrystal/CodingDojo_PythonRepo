@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  
+</head>
+<body>
+    <form action="/result" method="POST">
+        {% csrf_token %}
+        <p>Name: <input name="name" type="text"> </p><!-- Remember that the names of the input fields from our form will be the keys that we use to access the data in our server - the keys to the context dictionary (or request.session) -->
+        <p>Dojo Location: <select name="location">
+            <option value="San Jose">San Jose</option>
+            <option value="Boston">Boston</option>
+            <option value="Dallas">Dallas</option>
+            <option value="Seattle">Seattle</option>
+        </select></p>
+        <p>Favorite Language: <select name="language">
+            <option value="c">C++</option>
+            <option value="Python">Python</option>
+            <option value="Java">Java</option>
+        </select></p>
+        <p>Comment: <input name="comment" type="text"></p>
+        <p><button type="submit">Submit</button></p>
+    </form>
+</body>
+</html>

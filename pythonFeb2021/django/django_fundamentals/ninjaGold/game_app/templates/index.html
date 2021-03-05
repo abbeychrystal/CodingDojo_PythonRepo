@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Ninja Gold</title>
+</head>
+
+<body>
+    <div class="container"><h1>Ninja Gold Template</h1>
+        <div class="card bg-light border-primary mb-3" style="max-width: 20rem;">
+            <div class="card-body">
+                <h2 class="card-text">Your Gold: {{request.session.amount}}</h2>
+                <form action="/reset" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Reset Game</button>
+                </form>
+            </div>
+        </div>
+        <div class="card-group">
+            <div class="card bg-light border-dark mb-3" style="max-width: 15rem;">
+                <div class="card-body">
+                    <h3 class="card-title">Farm</h3>
+                    <p class="card-text">(earns 10-20 golds)</p>
+                    <form action="/process_money" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="place" value="Farm">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card bg-light border-dark mb-3" style="max-width: 15rem;">
+                <div class="card-body">
+                    <h3 class="card-group">Cave</h3>
+                    <p class="card-text">(earns 5-10 golds)</p>
+                    <form action="/process_money" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="place" value="Cave">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card bg-light border-dark mb-3" style="max-width: 15rem;">
+                <div class="card-body">
+                    <h3 class="card-group">House</h3>
+                    <p class="card-text">(earns 2-5 golds)</p>
+                    <form action="/process_money" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="place" value="House">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card bg-light border-dark mb-3" style="max-width: 15rem;">
+                <div class="card-body">
+                    <h3 class="card-group">Casino</h3>
+                    <p class="card-text">(gains or loses 0-50 golds)</p>
+                    <form action="/process_money" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="place" value="Casino">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="card bg-light border-dark mb-3" style="max-width: 40rem;">
+            <div class="card-body">
+                <h4 class="card-group">Activities:</h4>
+                {% for activity in request.session.activities%}
+                    {% if "gained" in activity %}  
+                        <p class="gained">{{activity}}</p>
+                    {% else %}
+                    <p class="lost">{{activity}}</p>  <!-- Add gained - green and lost- red in CSS -->
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
