@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>marCRUDApp</title>
+</head>
+<body>
+    <h1>Abbey's Chicken's</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for chicken in all_chickens %}
+            <tr>
+                <td>{{chicken.name}}</td>
+                <td>{{chicken.color}}</td>
+                <td>action links will go here</td>
+            </tr>
+            {% endfor%}
+        </tbody>
+    </table>
+
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <form action="/chickens/create" method="POST">
+        {% csrf_token %}
+        <label>Name: <input type="text" name="chicken_name"></label>
+        <label>Color: <input type="text" name="chicken_color"></label>
+        <input type="submit" value="Create Chicken">
+    </form>
+</body>
+</html>
